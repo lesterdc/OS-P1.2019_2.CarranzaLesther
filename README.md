@@ -51,10 +51,21 @@
             <p>En mi implemantacion, lo dividi en tres funciones</p>
             <ol>
                 <li><h4>main()</h4></li>
+                    <p>La funcion main se maneja principalmente de banderas, las cuales utilizo para controlar la informacion que se mostrara dependiendo de lo que el usuario (el que esta ejecutando el comando) este solicitando.</p>
+                    <p>Otro punto que se encuentra dentro de la funcion main, es la lectura del archivo al cual se desea aplicar el comando twc, no lo separe y aplique en otra funcion por que lo vi innecesario, es cierto que por cuestion de mantenimiento futuro en otros casos seria bastante recomendado, pero en este caso la estructura es bastante sencilla como para aplicar</p>
+                    <p>Dentro de la lectura del archivo se encuentras los hilos responsables del conteo de los datos que se piden por la entrada estandar</p>
                 <li><h4>*thread_function</h4></li>
+                    <p>Esta es una funcion para los hilos, al inicio defini una estructura para cada hilo, en esta funcion es en donde controlo esta caracteristica, de esta forma logro que el hilo no solamente lleve el conteo de sus numeros de lineas, sino tambien que lleve el conteo de caracteres y caracteres especiales</p>
                 <li><h4>*excess_thread_function</h4></li>
+                    <p>Al igual que la funcion anterior, aqui manejo los posibles errores</p>
             </ol>
         </ol>
     <li><h2>Complete Specification</h2></li>
+        <p>En el caso de manejo de ambiguedades del shell, se usaron principalmente un grupo de funciones propias como: help, exit, cd, entre otras. Estas funciones son manejadas por el propio shell, mientras que otros comandos como ifconfig el cual no estan desarrolladas en el shell pero se encuentran en el sistema previamente instaladas por el gestor de paquetes correspondiente</p>
+        <p>Las lineas de las cuales no tengan comandos especificados, simplemente no se ejecutaran y se mostrara un mensaje que informara que el comando no ha sido encontrado. En caso de existir el comando y no sea propio de la shell, igual se ejecutara normalmente</p>
+        <p>Asi mismo con los comandos con doble espacio,tabulaciones y argumentos inexistentes, la estructura de los comandos ya esta establecida por lo que si la sintaxis del comando se encuentra errore, el shell mostrara por la salida estandar informacion sobre la correcta sintaxis del comando</p>
     <li><h2>Know bugs or problems</h2></li>
+        <p>En el caso del shell hice dos supuestos, los cuales son que, el usuario no vaya a ingresar en la entrada estandar mas de 100 comandos y mas de 1000 caracteres, en caso de ocurrir estos puntos el shell no soportara la carga y habra un desbordamiento de pila</p>
+        <p>En el caso del comando twc, se puede sobrecargar la cantidad de hilos que trabajaran en el conteo logrando crear un limite para el performance de dicho comando</p>
+        <p>Como el uso de banderas fue altamente utilizado en el comando twc tambien queda vulnerable a fallos de seguridad, que en cursos previos recomendaban no usarlas en su gran mayoria</p>
 </ul>

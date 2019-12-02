@@ -238,7 +238,7 @@ void *thread_function(void *threadarg)
 		}
 }
 
-
+//Funcion para los errores de hilos
 void *excess_thread_function(void *threadarg)
 {
    struct thread_data_structure *my_data;
